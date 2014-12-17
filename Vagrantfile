@@ -91,18 +91,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # some recipes and/or roles.
   #
 
+  config.vm.provision :shell,
+                      inline: "apt-get update"
   config.vm.provision "chef_solo" do |chef|
     chef.install = false
-  #  chef.add_recipe "apache"
-  #  chef.add_recipe "git"
-  #  chef.add_recipe "mysql"
-  #   chef.cookbooks_path = "../my-recipes/cookbooks"
-  #   chef.roles_path = "../my-recipes/roles"
-  #   chef.data_bags_path = "../my-recipes/data_bags"
-    #   chef.add_recipe "mysql"
     chef.roles_path = "roles"
     chef.add_role "web"
-  #
+
   #   # You may also specify custom JSON attributes:
   #   chef.json = { mysql_password: "foo" }
   end
