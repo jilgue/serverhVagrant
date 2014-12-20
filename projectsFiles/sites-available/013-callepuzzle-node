@@ -1,0 +1,16 @@
+<VirtualHost *:80>
+	ServerAdmin webmaster@callepuzzle
+	ServerName gomarket.callepuzzle.com
+	
+	ProxyRequests off
+
+    <proxy *>
+        Order deny,allow
+        Allow from all
+    </proxy>
+
+    <location "/">
+        ProxyPass http://0.0.0.0:9000/ retry=0
+        ProxyPassReverse http://0.0.0.0:9000/
+    </location>
+</VirtualHost>
