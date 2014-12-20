@@ -1,8 +1,7 @@
 name "web"
-description "Sets up the Foo Server"
+description "Sets up the web Server"
 version "0.0.1"
 
-depends "git"
 depends "apache"
 depends "mysql"
 depends "php"

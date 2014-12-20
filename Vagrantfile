@@ -41,6 +41,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.synced_folder "#{ENV['HOME']}/projects", "/deploy/projects"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -96,6 +97,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "chef_solo" do |chef|
     chef.install = false
     chef.roles_path = "roles"
+    chef.add_role "base"
     chef.add_role "web"
 
   #   # You may also specify custom JSON attributes:
