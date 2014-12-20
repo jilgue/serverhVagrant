@@ -42,6 +42,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
   config.vm.synced_folder "#{ENV['HOME']}/projects", "/deploy/projects"
+  config.vm.synced_folder "projectsFiles/sites-available", "/etc/apache2/sites-available"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -99,6 +100,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.roles_path = "roles"
     chef.add_role "base"
     chef.add_role "web"
+    chef.add_role "projects"
 
   #   # You may also specify custom JSON attributes:
   #   chef.json = { mysql_password: "foo" }
