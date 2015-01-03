@@ -103,10 +103,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.roles_path = "roles"
     chef.add_role "base"
     chef.add_role "web"
-    chef.add_role "projects"
 
-  #   # You may also specify custom JSON attributes:
-  #   chef.json = { mysql_password: "foo" }
+    # You may also specify custom JSON attributes:
+    chef.json = { "apache" => {"sitesAvailable" => ["010-callepuzzle",
+                                                "011-callepuzzle"
+                                               ],
+                            }
+                }
   end
 
   # Enable provisioning with chef server, specifying the chef server URL,
