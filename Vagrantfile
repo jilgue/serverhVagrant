@@ -93,8 +93,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # some recipes and/or roles.
   #
 
-  config.vm.provision :shell,
-                      inline: "apt-get update"
+  if File.exist?("apt_update.flag") then
+    config.vm.provision :shell,
+                        inline: "apt-get update"
+  end
+
   config.vm.provision "chef_solo" do |chef|
     chef.install = false
     chef.roles_path = "roles"
