@@ -17,7 +17,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.network "private_network", ip: "192.168.56.102"
 
-  config.vm.synced_folder "#{ENV['HOME']}/projects", "/deploy/projects"
+  config.vm.synced_folder "#{ENV['HOME']}/projects", "/deploy/projects",
+                          :group => "www-data"
+
   config.vm.synced_folder "projectsFiles/sites-available", "/etc/apache2/sites-available"
 
   config.vm.provider "virtualbox" do |vb|
@@ -45,7 +47,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.json = { "apache" => {"sitesAvailable" => ["010-callepuzzle",
                                                     "011-callepuzzle"
                                                    ],
-                              }
+                              },
+                  "mysql" => {"password" => "develpass",
+                              "databases" => ["callepuzzle"],
+                             }
                 }
   end
 
