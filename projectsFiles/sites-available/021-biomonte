@@ -2,12 +2,12 @@
 	ServerAdmin webmaster@biomonte.es
 	ServerName biomonte.es
 
-	DocumentRoot /var/www/biomontewp
+	DocumentRoot /deploy/projects/biomontewp
 	<Directory />
 		Options FollowSymLinks
 		AllowOverride All
 	</Directory>
-	<Directory /var/www/biomontewp>
+	<Directory /deploy/projects/biomontewp>
 		Options Indexes FollowSymLinks MultiViews
 		AllowOverride All
 		Order allow,deny

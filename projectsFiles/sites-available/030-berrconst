@@ -2,12 +2,12 @@
 	ServerAdmin webmaster@callepuzzle
 	ServerName www.berrconst.es
 
-	DocumentRoot /var/www/berrconst
+	DocumentRoot /deploy/projects/berrconst
 	<Directory />
 		Options FollowSymLinks
 		AllowOverride All
 	</Directory>
-	<Directory /var/www/berrconst>
+	<Directory /deploy/projects/berrconst>
 		Options Indexes FollowSymLinks MultiViews
 		AllowOverride All
 		Order allow,deny
