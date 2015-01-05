@@ -34,6 +34,7 @@ execute "createDatabase" do
   end
 end
 
+# Databases load
 execute "loadDatabase" do
   node.mysql.databases.each do |db|
     file = "/deploy/projects/#{db}/#{db}.sql"
