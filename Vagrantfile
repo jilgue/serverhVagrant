@@ -13,12 +13,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # `vagrant box outdated`. This is not recommended.
   # config.vm.box_check_update = false
 
-  config.vm.box_url = "file:///home/cmartin/Code/serverh/package.box"
+  config.vm.box_url = "file:///../package.box"
 
   config.vm.network "private_network", ip: "192.168.56.102"
-
-  config.vm.synced_folder "#{ENV['HOME']}/projects", "/deploy/projects",
-                          :group => "www-data"
 
   config.vm.synced_folder "projectsFiles/sites-available", "/etc/apache2/sites-available"
 
@@ -53,5 +50,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                              }
                 }
   end
+
+  config.vm.synced_folder "#{ENV['HOME']}/projects", "/deploy/projects",
+                          :group => "www-data"
 
 end
